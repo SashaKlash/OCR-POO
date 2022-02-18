@@ -88,8 +88,15 @@ class Personnage
 
     public function setId($id)
     {
+        // On convertit l'argument en nombre entier.
+        // Si c'en était déjà un, rien ne changera.
+        // Sinon, la converions donnera le nombre 0 (à quelques exceptions près, mais rien d'important ici).
         $id = (int) $id;
+
+        // On vérifie ensuite si ce nombre est bien strictement positif.
         if ($id > 0) {
+
+            // Si c'est le cas, c'est tout bon, on assigne la valeur à l'attribut correspondant.
             $this->_id = $id;
         }
     }
@@ -106,7 +113,7 @@ class Personnage
         $forcePerso = (int) $forcePerso;
 
 
-        if ($forcePerso >= 0 && $forcePerso <= 100) {
+        if ($forcePerso >= 1 && $forcePerso <= 100) {
             $this->_forcePerso = $forcePerso;
         }
     }
@@ -124,7 +131,7 @@ class Personnage
     {
         $niveau = (int) $niveau;
 
-        if ($niveau >= 0 && $niveau <= 100) {
+        if ($niveau >= 1 && $niveau <= 100) {
             $this->_niveau = $niveau;
         }
     }
@@ -134,7 +141,7 @@ class Personnage
     {
         $experience = (int) $experience;
 
-        if ($experience >= 0 && $experience <= 100) {
+        if ($experience >= 1 && $experience <= 100) {
             $this->_experience = $experience;
         }
     }
