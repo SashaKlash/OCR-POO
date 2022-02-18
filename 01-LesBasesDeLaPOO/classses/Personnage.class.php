@@ -13,11 +13,12 @@ class Personnage
     const FORCE_MOYENNE = 50;
     const FORCE_GRANDE = 80;
 
-    public function __construct()
+    public function __construct($donnees)
     {
+        $this->hydrate($donnees);
     }
 
-    public function hydrate(Personnage $donnees)
+    public function hydrate(array $donnees)
     {
         foreach ($donnees as $key => $value) {
             $method = 'set' . ucfirst($key);
@@ -25,7 +26,8 @@ class Personnage
             if (method_exists($this, $method)) {
                 $this->$method($value);
             }
-        }
+        } 
+        var_dump($donnees);
         // if (isset($donnees['id'])) {
         //     $this->setId($donnees['id']);
         // }
@@ -88,17 +90,9 @@ class Personnage
 
     public function setId($id)
     {
-        // On convertit l'argument en nombre entier.
-        // Si c'en était déjà un, rien ne changera.
-        // Sinon, la converions donnera le nombre 0 (à quelques exceptions près, mais rien d'important ici).
-        $id = (int) $id;
 
-        // On vérifie ensuite si ce nombre est bien strictement positif.
-        if ($id > 0) {
-
-            // Si c'est le cas, c'est tout bon, on assigne la valeur à l'attribut correspondant.
-            $this->_id = $id;
-        }
+        // Si c'est le cas, c'est tout bon, on assigne la valeur à l'attribut correspondant.
+        $this->_id = (int) $id;
     }
 
     public function setNom($nom)
@@ -131,7 +125,7 @@ class Personnage
     {
         $niveau = (int) $niveau;
 
-        if ($niveau >= 1 && $niveau <= 100) {
+        if ($niveau >= 0) {
             $this->_niveau = $niveau;
         }
     }
@@ -141,7 +135,7 @@ class Personnage
     {
         $experience = (int) $experience;
 
-        if ($experience >= 1 && $experience <= 100) {
+        if ($experience >= 0 && $experience <= 100) {
             $this->_experience = $experience;
         }
     }

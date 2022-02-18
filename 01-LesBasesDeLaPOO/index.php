@@ -25,7 +25,6 @@
     ));
 
 
-    $perso1->hydrate($perso1);
 
     try {
         $db = new PDO(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME . ';port=' . DB_PORT . ';charset=' . DB_CHARSET, DB_LOGIN, DB_PWD);
@@ -39,16 +38,13 @@
     var_dump($db);
     echo '</pre>';
 
-    foreach ($perso1 as $key => $value) {
-        $perso1->hydrate($key);
-    }
 
     $manager = new PersonnageManager($db);
     $manager->add($perso1);
 
     $manager->getList();
 
-
+    include 'model/request.php'
     ?>
 </body>
 
