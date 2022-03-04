@@ -14,17 +14,7 @@
     <?php
     include 'config.php';
     include './classses/classesAutoLoad.php';
-
-
-    $perso1 = new Personnage(array(
-        'nom' => 'Sasha',
-        'forcePerso' => 10,
-        'degats' => 0,
-        'niveau' => 5,
-        'experience' => 10
-    ));
-
-
+    include 'data/donnees.php';
 
     try {
         $db = new PDO(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME . ';port=' . DB_PORT . ';charset=' . DB_CHARSET, DB_LOGIN, DB_PWD);
@@ -38,6 +28,13 @@
     var_dump($db);
     echo '</pre>';
 
+    $perso1 = new Personnage(array(
+        'nom' => 'Sasha',
+        'forcePerso' => 10,
+        'degats' => 0,
+        'niveau' => 5,
+        'experience' => 10
+    ));
 
     $manager = new PersonnageManager($db);
     $manager->add($perso1);

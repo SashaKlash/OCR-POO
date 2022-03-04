@@ -15,7 +15,7 @@ class Personnage
 
     public function __construct($donnees)
     {
-        $this->hydrate($donnees);
+        $this->hydrate(array($donnees));
     }
 
     public function hydrate(array $donnees)
@@ -26,8 +26,8 @@ class Personnage
             if (method_exists($this, $method)) {
                 $this->$method($value);
             }
-        } 
-        var_dump($donnees);
+        }
+        // var_dump($donnees);
         // if (isset($donnees['id'])) {
         //     $this->setId($donnees['id']);
         // }

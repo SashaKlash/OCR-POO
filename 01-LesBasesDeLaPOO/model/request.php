@@ -10,4 +10,4 @@ while ($donnees = $request->fetch(PDO::FETCH_ASSOC)) // Chaque entrée sera réc
     echo $donnees['nom'], ' a ', $donnees['forcePerso'], ' de force, ', $donnees['degats'], ' de dégâts, ', $donnees['experience'], ' d\'expérience et est au niveau ', $donnees['niveau'], '<br />';
 }
 
-$perso = new Personnage($donnees, Personnage::FORCE_PETITE);
+$perso3 = new Personnage($donnees, Personnage::FORCE_PETITE);
